@@ -1,8 +1,10 @@
 public class TempConverter {
     //Converts F to C, then determines if the temperature is freezing.
-    
-    public static double fahrenheitToCelsius(int f){
-        return (double) (f - 32) * 5 / 9;
+    double f = 32, c = 0;
+
+    public TempConverter(double fVal){
+        f = fVal;
+        c = (f - 32) * 5 / 9;
     }
 
     public static int roundToInt(double x){
@@ -12,18 +14,18 @@ public class TempConverter {
         }else return (int) x;
     }
 
-    public static boolean isFreezing(double celsius){
-        if(celsius <= 0){
+    public boolean isFreezing(){
+        if(c <= 0){
             return true;
         }else return false;
     }
     
     public static void main(String[] args) {
-        int f = 32;
-        int c = roundToInt(fahrenheitToCelsius(f));
-        System.out.printf("%d degrees f is %d degrees c.\n", f, c);
-        if(isFreezing(c)){
+        TempConverter myMachine = new TempConverter(50);
+        System.out.printf("%d degrees f is %d degrees c.\n", myMachine.f, myMachine.c);
+        if(myMachine.isFreezing()){
             System.out.print("The temperature is freezing!");
         }else System.out.print("The temperature is above freezing point.");
+        return;
     }
 }
