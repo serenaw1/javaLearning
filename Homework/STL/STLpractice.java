@@ -1,3 +1,4 @@
+package STL;
 public class STLpractice {
 //How do i use the debugger?
     public static void println(String message) {
@@ -23,9 +24,16 @@ public class STLpractice {
         return true;
     }
 
-    // public static int compareTo(char a1[], char a2[]){
-    //     ;
-    // }
+    public static int compareTo(char a1[], char a2[]){
+        //returns -1 if a1 is first alphabetecally, 1 if a2 is, and 0 if they are equal.
+        for(int i = 0; i < length(a1) && i < length (a2); i++){
+            if(a1[i] > a2[i]){return 1;}
+            if(a2[i] > a1[i]){return -1;}
+        }
+        if(length(a1) > length(a2)){return 1;}
+        else if(length(a2) > length(a1)){return -1;}
+        else return 0;
+    }
 
     public static int indexOf(char target, char a[]){
     //Checks if target is a characer in array a and returns index value.
@@ -48,8 +56,8 @@ public class STLpractice {
     }
 
     public static void main(String[] args) {
-        char w[] = {'h', 'e', 'a', 't'};
-        char z[] = {'b', 'e', 't'};
+        char w[] = {'h', 'e', 'a', 'l'};
+        char z[] = {'h', 'e', 'a', 'l'};
         print("w = ");
         System.out.println(w);
         print("z = ");
@@ -58,7 +66,9 @@ public class STLpractice {
         println("\nlengths of w, z, respectively:");
         println("" + length(w) + "\t" + length(z) + "\n"); //char amt
 
-        println("" + equals(w, z));
+        println("a1 == a2? " + equals(w, z) + "\n");
+
+        println("is array w or z first alphabetically? " + compareTo(w, z) + "\n");
         
         char target = 't';
         System.out.printf("%c is letter %d in array w\n", target, indexOf(target, w)+1);
